@@ -1,16 +1,13 @@
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
 
-        result = []
-        for i in range(len(nums)): #O(100)
-            if nums[i] == val:
+        idx = 0
+        while idx < len(nums):
+            if nums[idx] == val:
+                del nums[idx]
                 continue
-                  
-            result.append(nums[i])
-
-        for i in range(len(nums)): #O(100)
-            if i < len(result):
-                nums[i] = result[i]
-
+                
+            idx += 1
+            
         
-        return len(result)
+        return len(nums)
