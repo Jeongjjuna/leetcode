@@ -1,17 +1,17 @@
 class Solution:
+    def swap_reverse(self, nums, start, end):
+        while(start < end):
+            temp = nums[start]
+            nums[start] = nums[end]
+            nums[end] = temp
+            start += 1
+            end -= 1
+    
     def rotate(self, nums: List[int], k: int) -> None:
-        # 회전을 위해 deque자료구조 사용
-        dq = deque()
-        
-        for num in nums:
-            dq.append(num)
-
-        # k번 반복
-        for i in range(k):
-            dq.appendleft(dq.pop()) 
-            
-        # 기존 배열에 넘겨주기
-        for i in range(len(nums)):
-            nums[i] = dq[i]
+        n = len(nums)
+        k = k % n
+        self.swap_reverse(nums, 0, n - 1)
+        self.swap_reverse(nums, 0, k - 1)
+        self.swap_reverse(nums, k, n - 1)
         
         
