@@ -10,3 +10,5 @@ class Solution:
                     return True
                 
             h[elem] = i
+            
+        return False
