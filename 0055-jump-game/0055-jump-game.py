@@ -5,7 +5,7 @@ class Solution:
         
         for i in range(n):
             if i > max_idx:
-                continue
+                break
             
             if i <= max_idx and i + nums[i] >= n - 1:
                 return True
