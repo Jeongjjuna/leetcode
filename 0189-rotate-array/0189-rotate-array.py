@@ -1,15 +1,14 @@
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-        # 회전을 위해 deque자료구조 사용
-        dq = deque()
+       
+    
+        d = dict()
+        n = len(nums)
         
-        for num in nums: # O(N)
-            dq.append(num)
-
-        # k번 반복
-        for i in range(k): # O(K)
-            dq.appendleft(dq.pop()) 
+        # k번 이후에 위치할 index를 key, 그 값을 value로 하여 dict에 저장한다.
+        for i in range(n): # O(N)
+            d[(i + k) % n] = nums[i]
             
-        # 기존 배열에 넘겨주기
-        for i in range(len(nums)): # O(N)
-            nums[i] = dq[i]
+        
+        for i in range(n): # O(N)
+            nums[i] = d[i]
