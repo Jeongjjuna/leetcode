@@ -1,25 +1,41 @@
 class Solution:
+    
+    ans = sys.maxsize
+    
+    # [start, end] 구간에서의 조건에 맞는 값 찾기
+    def binary_search(self, start, end, cum_sum, nums, target):
+        fixed_start = start
+        
+        # print(fixed_start, " -> ",end)
+        
+        while start <= end:
+            mid = (start + end) // 2
+            k = cum_sum[mid] - cum_sum[fixed_start] + nums[fixed_start]
+            
+            if k >= target:
+                end = mid - 1
+                self.ans = min(self.ans, abs(mid- fixed_start) + 1)
+            elif k < target:
+                start = mid + 1
+
+
+    
+    
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         
-        p1, p2 = 0, 0
-        n = len(nums)
-        min_interval = sys.maxsize
-        s = nums[0]
-        while p1 <= p2 and p1 < n and p2 < n:
-            if s < target:
-                p2 += 1
-                if 0 <= p2 <n:
-                    s += nums[p2]
-                
-            elif s >= target:
-                min_interval = min(min_interval, p2 - p1 + 1)
-                s -= nums[p1]
-                p1 += 1
-                
+        # 누적합구하기
+        cum_sum = [0]*len(nums)
+        cum_sum[0] = nums[0]
+        for i in range(1, len(nums)):
+            cum_sum[i] = cum_sum[i - 1] + nums[i]
+            
         
-        # 
-        if min_interval == sys.maxsize:
+        # 시작점고르기
+        for start in range(len(nums)):
+            self.binary_search(start, len(nums) - 1, cum_sum, nums, target)
+        
+        
+        if self.ans == sys.maxsize:
             return 0
-        else:    
-            return min_interval
-                    
+        else:
+            return self.ans
