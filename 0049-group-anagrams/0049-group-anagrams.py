@@ -1,6 +1,6 @@
 class Solution:
     
-    # 접근1. 정렬하기
+    # 접근1. 정렬 후 dict에 저장하기
     def sol_1(self, strs):
         answer = []
         
