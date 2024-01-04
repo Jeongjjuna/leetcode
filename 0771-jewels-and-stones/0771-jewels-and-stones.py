@@ -38,4 +38,4 @@ class Solution:
     
     
     def numJewelsInStones(self, jewels: str, stones: str) -> int:
-        return self.sol_3(jewels, stones);
+        return self.sol_1(jewels, stones);
