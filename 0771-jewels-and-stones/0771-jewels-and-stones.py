@@ -22,8 +22,20 @@ class Solution:
                 cnt += 1
         return cnt
     
-    
+    # 접근2. 집합 set -> O(n) + O(n) + O(1) = O(n)
+    def sol_3(self, jewels, stones):
+        # 사전에 값 넣기
+        s = set()
+        for elem in jewels: # O(n)
+            s.add(elem)
+            
+        # 사전에 존재하는지 확인하기
+        cnt = 0
+        for elem in stones: # O(n)
+            if elem in s: # O(1)
+                cnt += 1
+        return cnt
     
     
     def numJewelsInStones(self, jewels: str, stones: str) -> int:
-        return self.sol_2(jewels, stones);
+        return self.sol_3(jewels, stones);
