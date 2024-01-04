@@ -1,6 +1,6 @@
 class Solution:
     
-    # 접근1. 해시를 이용한 완전탐색 -> O(n**2)
+    # 접근1. 해시를 이용한 완전탐색 -> O(n**2) 276ms
     def sol_1(self, s):
         n = len(s)
         ans = 0
@@ -22,7 +22,7 @@ class Solution:
         return ans
     
     
-    # 접근2. 투포인터 -> O(n)
+    # 접근2. 투포인터 -> O(n) 69ms
     def sol_2(self, s):
         n = len(s)
         cnt = 0
