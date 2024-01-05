@@ -19,6 +19,7 @@ class Solution:
             soldiers_cnt = sum(mat[row]) # row 행의 군인 수
             heapq.heappush(hq, (soldiers_cnt, row))# (1순위 : 군인수, 2순위 : 행번호)
         
-        return [heapq.heappop(hq)[1] for _ in range(k)]
         
+        #  hq = [(1, 2), (2, 0), (2, 3), (4, 1), (5, 4)]
+        return [heapq.heappop(hq)[1] for _ in range(k)] # [2,0,3] 출력
         
