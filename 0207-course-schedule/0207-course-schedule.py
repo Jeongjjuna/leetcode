@@ -15,6 +15,8 @@ class Solution:
                     is_cycle = dfs(start, nv)
                     if is_cycle:
                         return True
+                    
+            # return False -> 아무것도 없으면 기본 False를 반환한다.
                 
         
         
