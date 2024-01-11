@@ -1,4 +1,3 @@
-
 class Solution:
     
     # 접근1. dfs
@@ -15,11 +14,8 @@ class Solution:
                     is_cycle = dfs(start, nv)
                     if is_cycle:
                         return True
-                    
-            # return False -> 아무것도 없으면 기본 False를 반환한다.
+            return False
                 
-        
-        
         # 연결리스트, 모든노드리스트 생성
         graph = [[]*numCourses for _ in range(numCourses)]
         nodes = set()
