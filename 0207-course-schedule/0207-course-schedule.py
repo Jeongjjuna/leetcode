@@ -12,10 +12,10 @@ class Solution:
                 
                 if not visited[nv]:
                     visited[nv] = True
-                    if dfs(start, nv):
+                    is_cycle = dfs(start, nv)
+                    if is_cycle:
                         return True
                 
-            return False
         
         
         # 연결리스트, 모든노드리스트 생성
