@@ -33,12 +33,10 @@ class Solution:
     # 접근3. 이진탐색 O(NlogN)
     def sol_3(self, numbers, target):
         
-        for i, elem in enumerate(numbers):
-            
+        def find_value(numbers, left, right):
             left, right = i + 1, len(numbers) - 1
             expected = target - elem
             idx = -1
-
             while left <= right:
                 mid = (left + right) // 2
                 if numbers[mid] == expected: # 찾았다면 해당 index를 반환합니다.
@@ -48,11 +46,13 @@ class Solution:
                 if numbers[mid] > expected:
                     right = mid - 1  
                 else:           
-                    left = mid + 1
-            
+                    left = mid + 1       
+            return idx
+        
+        for i, elem in enumerate(numbers):
+            idx = find_value(numbers, i + 1, len(numbers) - 1)
             if idx == -1:
                 continue
-            
             return [i + 1, idx + 1]
         
     
