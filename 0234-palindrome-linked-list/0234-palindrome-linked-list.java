@@ -12,32 +12,22 @@ import java.util.*;
 
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        Deque<Integer> stack = new ArrayDeque<>();
+        
+        // 1. 연결리스트의 int값들을 deque배열에 순차적으로 담는다.
+        Deque<Integer> deque = new ArrayDeque<>();
 
         ListNode node = head;
         while (node != null) {
-            stack.add(node.val);
+            deque.add(node.val);
             node = node.next;
         }
 
+        // 2. deque의 맨앞과 맨뒤의 값을 비교하면서 팰린드롬을 판별한다.
         node = head;
-        
-        // System.out.println(stack);
-        // System.out.println(node.val);
-
-        while (!stack.isEmpty()) {
-            //int a = stack.pop();
-            //int b = node.val;
-            //System.out.println(a);
-            //System.out.println(b);
-
-           if(stack.removeLast() != node.val) {
-               //System.out.println("이거 왜 출력 안됨?");
+        while (!deque.isEmpty()) {
+           if(deque.removeLast() != node.val) {
                return false;
            }
-            // if (!stack.pop().equals(node.val)) { 
-           //      return false; 
-           //  }
             node = node.next; 
         }
         return true;  
